@@ -16,22 +16,56 @@
       }
     </style>
   </head>
-  <body>
 
-    <h1>My shopping list</h1>
+<body>
 
-    <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
-      <button>Add item</button>
-    </div>
+<h1>My shopping list</h1>
 
-    <ul>
+<div>
+<label for="item">Enter a new item:</label>
+<input type="text" name="item" id="item">
+<button id="add-button">Add item</button>
+</div>
 
-    </ul>
+<ul id="list">
 
-    <script>
+</ul>
 
-    </script>
-  </body>
+<script>
+const addingItemButton = document.querySelector('#add-button');
+const addingItemInput = document.querySelector('#item');
+const itemList = document.querySelector('#list');
+
+function clickButton () {
+  addingItemButton.addEventListener('click', () => {
+    let newItem = addingItemInput.value;
+    addingItemInput.value = "";
+    console.log(newItem);
+    newSpan.textContent = newItem;
+  });
+
+  
+}
+clickButton();
+
+const newList = document.createElement("li");
+const newSpan = document.createElement("span");
+const newButton = document.createElement("button");
+
+newList.appendChild(newSpan);
+newList.appendChild(newButton);
+itemList.appendChild(newList);
+
+newButton.textContent = 'Delete'
+newButton.classList.add('delete-button')
+
+function deleteList( ) {
+  newButton.addEventListener('click', () => {
+  newList.remove();
+  });
+  addingItemInput.focus()
+}
+deleteList()
+</script>
+</body>
 </html>
